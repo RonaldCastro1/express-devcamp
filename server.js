@@ -16,16 +16,23 @@ dotenv.config({
 })
 /* 2. Crear el objeto app con express */
 const app = express() 
+
+//Habilitar express para tratar datos content-type json
+app.use(express.json())
+
 //conectar bd
 connectDB()
+
 /* Relacionar rutas de dominio */
 app.use('/api/v1/bootcamps', bootcampRoutes)
 app.use('/api/v1/curso', cursoRoutes)
 app.use('/api/v1/users', userRoutes)
+
 /* 3. Iniciar el servidor de desarrollo de express */
 app.get('/', (request, response)=>{
     response.send('La ruta esta full mi perrito 🥳')
 })
+
 //Consultar rutas del proyecto
 console.log(listEndpoints(app))
 

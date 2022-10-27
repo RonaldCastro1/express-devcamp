@@ -14,12 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps",
+							"raw": "http://localhost:5000/api/v1/bootcamps",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
@@ -35,17 +35,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/10",
+							"raw": "http://localhost:5000/api/v1/bootcamps/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
 								"bootcamps",
-								"10"
+								"2"
 							]
 						}
 					},
@@ -55,14 +55,24 @@
 					"name": "Crear",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ronald\",\r\n    \"description\": \"Holaaaa\",\r\n    \"website\": \"www.ronald.com\",\r\n    \"phone\": \"321555\",\r\n    \"average_raiting\": \"43\",\r\n    \"average_cost\": \"43000\"\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps",
+							"raw": "http://localhost:5000/api/v1/bootcamps",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
@@ -76,19 +86,29 @@
 					"name": "Actualizar",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Heibert\"\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/bootcamps/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
 								"bootcamps",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -100,17 +120,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/bootcamps/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
 								"bootcamps",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -127,16 +147,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/curso/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
+								"curso",
 								"1"
 							]
 						}
@@ -147,18 +167,28 @@
 					"name": "Actualizar",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Acabeeee\"\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/1",
+							"raw": "http://localhost:5000/api/v1/curso/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
+								"curso",
 								"1"
 							]
 						}
@@ -169,18 +199,28 @@
 					"name": "Crear",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Tkmaaaaaaaaa\",\r\n    \"description\": \"tkmm\",\r\n    \"weeks\": \"200\",\r\n    \"enroll_cost\": \"2000\",\r\n    \"minium_skill\": \"beggin\"\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps",
+							"raw": "http://localhost:5000/api/v1/curso",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
-								"bootcamps"
+								"curso"
 							]
 						}
 					},
@@ -192,17 +232,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps/10",
+							"raw": "http://localhost:5000/api/v1/curso/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
-								"bootcamps",
-								"10"
+								"curso",
+								"1"
 							]
 						}
 					},
@@ -214,16 +254,149 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9999/api/v1/bootcamps",
+							"raw": "http://localhost:5000/api/v1/curso",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "9999",
+							"port": "5000",
 							"path": [
 								"api",
 								"v1",
-								"bootcamps"
+								"curso"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Selecionar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Juan\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"00000@misena.edu.co\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"5"
 							]
 						}
 					},
@@ -237,12 +410,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000",
+					"raw": "http://localhost:9999/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000"
+					"port": "9999",
+					"path": [
+						""
+					]
 				}
 			},
 			"response": []

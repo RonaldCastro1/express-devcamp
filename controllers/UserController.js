@@ -113,12 +113,11 @@ exports.deleteUser = async(req,res) => {
                     id: req.params.id
                 }
         })
-        const deleteUser = await User.findByPk(req.params.id)
+        res.status(200).json({"success": true, "data": singleUser})
         }
-        
-        res.status(200).json({"success": true, "data": deleteUser})
     } catch (error) {
-        
-    }
-    
-}
+        res.status(400).json({
+            "success":false,
+            "error":'error al eliminar'
+    })
+}}

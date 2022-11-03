@@ -108,7 +108,7 @@ exports.deleteUser = async(req,res) => {
         if(singleUser){
             res.status(200).json({"success": false, "errors": "usuario no encontrado"})
         }else{
-            await User.destroy(req.body,{
+            await User.destroy(req,{
                 where:{
                     id: req.params.id
                 }

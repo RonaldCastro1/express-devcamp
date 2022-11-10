@@ -1,39 +1,153 @@
-const sequelize = require ('../config/seq')
-const {DataTypes} = require ('sequelize')
-const CourseModel = require ('../models/courses')
+const {DataTypes, ValidationError} = require('sequelize')
+const sequelize = require('../config/seq')
+const CursoModel = require ('../models/courses')
 
-const Cours = CourseModel(sequelize, DataTypes)
-exports.allCurso = async (req, res) => {
-    const allUsers = await Cours.findAll()
-    res.status(200).json({"success": true, "data": allUsers})
-}
+const Curso = CursoModel(sequelize, DataTypes)
+
+exports.allCursos = async (req, res) => {
+    try {
+        const allCursos = await Curso.findAll()
+    console.log(allCursos)
+    res.status(200).json({"success": true, "data": allCursos})
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            const msg_errores=error.errors.map(errorItem=>
+                errorItem.message
+            )
+            res.status(422).json({
+                "success": false,
+                "errors": msg_errores
+            })
+        }
+        else{
+            res.status(400).json({
+                "success": false,
+                "errors": "Bd no encontrada"
+            })
+        }
+    }
+
+    }
 
 exports.singleCurso = async (req, res) => {
-    const singleCurso = await Cours.findByPk(req.params.id)
-    res.status(200).json({"success": true, "data": singleCurso})
+    try {
+        const singleCurso = await Curso.findByPk(req.params.id)
+        if (!singleCurso) {
+            res.status(400).json({
+                "success": false,
+                "errors": "Usuario no encontrado"
+            })
+        }
+        else{
+            res.status(200).json({"success": true, "data": singleCurso})
+        }
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            const msg_errores=error.errors.map(errorItem=>
+                errorItem.message
+            )
+            res.status(422).json({
+                "success": false,
+                "errors": msg_errores
+            })
+        }
+        else{
+            res.status(400).json({
+                "success": false,
+                "errors": "Bd no encontrada"
+            })
+        }
+    }
 }
 
 exports.createCurso = async (req,res) => {
-    const createUser = await Cours.create(req.body)
-    res.status(201).json({"success": true, "data": createUser})
+    try {
+        //nuevo usuario
+        const newCurso = await Curso.create(req.body)
+        //response
+        res.status(201).json({"success": true, "data": newCurso})   
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            const msg_errores=error.errors.map(errorItem=>
+                errorItem.message
+            )
+            res.status(422).json({
+                "success": false,
+                "errors": msg_errores
+            })
+        }
+        else{
+            res.status(400).json({
+                "success": false,
+                "errors": "Bd no encontrada"
+            })
+        }
+}
 }
 
 exports.updateCurso = async (req,res) => {
-    await Cours.update(req.body,{
-        where:{
-            id: req.params.id
+    try {
+        //Seleccionamos por id
+        const singleCurso = await Curso.findByPk(req.params.id)
+        //Si no existe
+        if (!singleCurso) {
+            res.status(400).json({
+                "success": false,
+                "errors": "Usuario no encontrado"
+            })
         }
-    })
-    const singleCurso = await Cours.findByPk(req.params.id)
-    res.status(200).json({"success": true, "data": singleCurso})
+        else {
+            await Curso.update(req.body,{
+                where: {
+                    id: req.params.id
+                }
+            })
+        }
+        //Re-seleccionamos 
+        const updatedCurso = await Curso.findByPk(req.params.id)
+        //response con el usuario actualizado
+        res.status(200).json({"success": true, "data": updatedCurso})
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            const msg_errores=error.errors.map(errorItem=>
+                errorItem.message
+            )
+            res.status(422).json({
+                "success": false,
+                "errors": msg_errores
+            })
+        }
+        else{
+            res.status(400).json({
+                "success": false,
+                "errors": "Bd no encontrada"
+            })
+        }
+    }
 }
 
 exports.deleteCurso = async (req,res) => {
-    await Cours.destroy({
-        where:{
-            id: req.params.id
+    try {
+        const singleCurso = await Curso.findByPk(req.params.id)
+        if (!singleCurso) {
+            res.status(400).json({
+                "success": false,
+                "errors": "Usuario no encontrado"
+            })
         }
-    })
-    const singleCurso = await Cours.findByPk(req.params.id)
-    res.status(200).json({"success": true, "data": singleCurso})
+        else {
+            await Curso.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.status(200).json({"success": true, "data": singleCurso})
+        }
+    } catch (error) {
+            res.status(400).json({
+                "success": false,
+                "errors": "Bd no encontrada"
+            })
+       
+    }
 }
